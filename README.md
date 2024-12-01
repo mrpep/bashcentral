@@ -6,6 +6,13 @@ What if commands get logged into a single remote place and then I can use an UI 
 
 That's what bashcentral is about. The requisite is that you need a Nextcloud server where to store the logs.
 
+### Prerequisites:
+- Have a nextcloud instance accesible from the clients
+- Install jq in the clients:
+```
+sudo apt-get install jq
+```
+
 ### Usage:
 
 - From the computers where you want to log:
