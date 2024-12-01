@@ -39,6 +39,7 @@ def get_logs():
         for response_element in root.findall("{DAV:}response"):
             href = response_element.find("{DAV:}href").text
             if href.endswith('.json'):
+                print(href)
                 hostname = href.split('/')[-1].split('.log.json')[0]
                 response_log_i = requests.get(
                     f"{NEXTCLOUD_URL}{href}",
@@ -46,9 +47,12 @@ def get_logs():
                 )
                 if response_log_i.status_code == 200:
                     for l in response_log_i.text.splitlines():
-                        ld = json.loads(l)
-                        ld['hostname'] = hostname
-                        logs.append(ld)
+                        try:
+                            ld = json.loads(l)
+                            ld['hostname'] = hostname
+                            logs.append(ld)
+                        except:
+                            print(f"Couldn't parse {l}")
                 else:
                     print(f"Error: {response_log_i.status_code} - {response_log_i.text}")
     else:
