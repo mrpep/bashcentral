@@ -13,7 +13,7 @@ log_command() {
     local command=$(history 1 | sed 's/^[ ]*[0-9]*[ ]*//')
 
     # Create a JSON entry
-    local json_entry=$(jq -n --arg ts "$timestamp" \
+    local json_entry=$(jq -nc --arg ts "$timestamp" \
                             --arg user "$user" \
                             --arg cwd "$cwd" \
                             --arg cmd "$command" \
