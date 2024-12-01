@@ -2,7 +2,7 @@ I run bash commands from many different computers.
 
 Sometimes I want to find a recent bash command and it's hard because first I need to find the computer where I ran it.
 
-What if commands get logged into a single remote place and then I can search with an UI commands from all my computers?
+What if commands get logged into a single remote place and then I can use an UI to search commands from all my computers?
 
 That's what bashcentral is about. The requisite is that you need a Nextcloud server where to store the logs.
 
