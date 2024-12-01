@@ -14,6 +14,23 @@ That's what bashcentral is about. The requisite is that you need a Nextcloud ser
 bash install_client.sh
 ```
 
-Follow instructions and you are done. By default logs will get uploaded every minute, but you can configure that during installation.
+Follow instructions and you are done. 
+Then reload terminal or:
+```
+source ~/.bashrc
+```
 
-- From one of the computers (or a different one), launch the UI:
+Finally ensure that upload_nc.sh has execute permission, or run:
+```
+chmod +x upload_nc.sh
+```
+
+By default logs will get uploaded every minute, but you can configure that during installation.
+
+- From one of the computers (or a different one), launch the API:
+
+```
+python app.py
+```
+
+- And then open the webpage ui.html. You'll see all the logs combined into a single table with search options :)
