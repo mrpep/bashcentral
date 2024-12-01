@@ -5,7 +5,7 @@ CREDENTIALS_PATH=$(grep "^CREDENTIALS_PATH:" "$CONFIG_PATH" | cut -d':' -f2 | xa
 LOCAL_LOG_DIR=$(grep "^LOG_DIR:" "$CONFIG_PATH" | cut -d':' -f2 | xargs)
 
 HOSTNAME=$(hostname)  # Get the system's hostname
-LOCAL_LOG_FILE="$LOCAL_LOGDIR/$HOSTNAME.log.json"
+LOCAL_LOG_FILE="$LOCAL_LOG_DIR/$HOSTNAME.log.json"
 
 NEXTCLOUD_URL=$(awk "NR==1" "$CREDENTIALS_PATH")
 NEXTCLOUD_USER=$(awk "NR==2" "$CREDENTIALS_PATH")
