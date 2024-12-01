@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs Viewer</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <h1>Terminal Command Logs</h1>
+    <table id="logsTable" class="display">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Hostname</th>
+                <th>Username</th>
+                <th>Working Directory</th>
+                <th>Command</th>
+            </tr>
+        </thead>
+        <tbody id="logsBody">
+            <!-- Log entries will go here -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch logs from the backend
+            $.get("http://localhost:5000/logs", function(data) {
+                let logs = data || [];
+                logs.forEach(log => {
+                    $('#logsBody').append(`
+                        <tr>
+                            <td>${log.timestamp}</td>
+                            <td>${log.hostname}</td>
+                            <td>${log.user}</td>
+                            <td>${log.cwd}</td>
+                            <td>${log.command}</td>
+                        </tr>
+                    `);
+                });
+
+                // Initialize DataTable after data is appended
+                $('#logsTable').DataTable();
+            }).fail(function() {
+                alert("Failed to load logs");
+            });
+        });
+    </script>
+
+</body>
+</html>
